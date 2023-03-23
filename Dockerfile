@@ -9,7 +9,8 @@ RUN apk add --no-cache bind-tools smokeping lighttpd curl fping sudo traceroute 
     && chmod o+w /var/lib/smokeping/.simg \
     && rm -fr /etc/smokeping \
     && chmod a+s /usr/bin/traceroute /usr/bin/tcptraceroute /usr/sbin/fping \
-    && mv /etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf.orig
+    && mv /etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf.orig \
+    && fc-cache -rsv
 
 COPY run.sh /app/run.sh
 COPY ./etc/lighttpd.conf /etc/lighttpd/lighttpd.conf
