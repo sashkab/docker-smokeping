@@ -8,7 +8,7 @@ if [ ! -e "/etc/ssmtp/ssmtp.conf" ]; then
     echo "hostname=\"${SSMTP_REWRITE_DOMAIN:=localhost}\"" >> /etc/ssmtp/ssmtp.conf
 fi
 
-/usr/bin/smokeping --config="/etc/smokeping/config"
+/usr/sbin/smokeping --config="/etc/smokeping/config"
 exec 3>&1
 chmod o+w /dev/fd/3
 /usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
