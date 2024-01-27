@@ -1,4 +1,9 @@
-FROM alpine:3.18.5
+FROM alpine:3.19.1
+
+LABEL \
+    maintainer="github@compuix.com" \
+    version="2024.01.27" \
+    description="smokeping in a docker container."
 
 RUN apk add --no-cache bind-tools smokeping lighttpd curl fping sudo traceroute tcptraceroute openrc tzdata ssmtp \
     && ln -sfn /usr/share/zoneinfo/America/New_York /etc/localtime \
