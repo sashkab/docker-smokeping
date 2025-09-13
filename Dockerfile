@@ -1,8 +1,8 @@
-FROM alpine:3.21.2
+FROM alpine:3.22.1
 
 LABEL \
     maintainer="github@compuix.com" \
-    version="2025.01.14" \
+    version="2025.09.13" \
     description="smokeping in a docker container."
 
 RUN apk add --no-cache bind-tools smokeping lighttpd curl fping sudo traceroute tcptraceroute openrc tzdata ssmtp \
