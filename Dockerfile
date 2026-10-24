@@ -2,7 +2,7 @@ FROM alpine:3.24.3
 
 LABEL \
     maintainer="github@compuix.com" \
-    version="2026.10.22" \
+    version="2026.10.24" \
     description="smokeping in a docker container."
 
 RUN apk add --no-cache bind-tools smokeping lighttpd curl fping sudo traceroute tcptraceroute openrc tzdata ssmtp \
@@ -15,7 +15,8 @@ RUN apk add --no-cache bind-tools smokeping lighttpd curl fping sudo traceroute 
     && rm -fr /etc/smokeping \
     && chmod a+s /usr/bin/traceroute /usr/bin/tcptraceroute /usr/sbin/fping \
     && mv /etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf.orig \
-    && fc-cache -rsv
+    && fc-cache -rsv \
+    && sed -i 's/\$RRDs::VERSION >= 1\.199908/1/' /usr/share/smokeping/Smokeping.pm /usr/share/smokeping/Smokeping/Graphs.pm
 
 COPY run.sh /app/run.sh
 COPY ./etc/lighttpd.conf /etc/lighttpd/lighttpd.conf
